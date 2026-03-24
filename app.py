@@ -1,16 +1,17 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import mysql.connector
+import os
 
 app = Flask(__name__)
 CORS(app)
 
-# ✅ CONNECT TO MYSQL
+# ✅ CONNECT TO MYSQL (from environment variables)
 db = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="Maria@bh25",   # 🔴 put your reset password here
-    database="woodburyDB"
+    host=os.getenv("MYSQLHOST", "localhost"),
+    user=os.getenv("MYSQLUSER", "root"),
+    password=os.getenv("MYSQLPASSWORD", "Maria@bh25"),
+    database=os.getenv("MYSQLDATABASE", "woodburyDB")
 )
 
 cursor = db.cursor()
@@ -25,7 +26,6 @@ def home():
 def add_reservation():
     try:
         data = request.get_json()
-
         name = data.get('name')
         email = data.get('email')
         guests = data.get('guests')
@@ -37,7 +37,7 @@ def add_reservation():
         return jsonify({"message": "Reservation added successfully!"})
     
     except Exception as e:
-        print("ERROR:", e)   # 🔴 THIS WILL SHOW REAL ERROR
+        print("ERROR:", e)
         return jsonify({"message": "Error occurred"}), 500
 
 # ✅ GET DATA

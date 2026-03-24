@@ -32,7 +32,7 @@ const name = document.getElementById("name").value;
 const email = document.getElementById("email").value;
 const guests = document.getElementById("guests").value;
 
-fetch("http://localhost:5000/add_reservation", {
+fetch("http://localhost:8000/add_reservation", {
 method: "POST",
 headers: {
 "Content-Type": "application/json"
