@@ -1,4 +1,7 @@
 // Smooth scrolling for navigation
+console.log("JS CONNECTED");
+document.addEventListener("DOMContentLoaded", function () {
+
 // ------------------ SMOOTH SCROLL ------------------
 document.querySelectorAll("nav a").forEach(link => {
 link.addEventListener("click", function(e){
@@ -23,36 +26,35 @@ const form = document.querySelector("form");
 if(form){
 form.addEventListener("submit", function(e){
 
-e.preventDefault(); // VERY IMPORTANT
+e.preventDefault();
 
-const name = document.querySelector("input[type=text]").value;
-const email = document.querySelector("input[type=email]").value;
-const guests = document.querySelector("input[type=number]").value;
+const name = document.getElementById("name").value;
+const email = document.getElementById("email").value;
+const guests = document.getElementById("guests").value;
 
-// Send data to Flask backend
-fetch("http://127.0.0.1:5000/add_reservation", {
+fetch("http://localhost:5000/add_reservation", {
 method: "POST",
 headers: {
 "Content-Type": "application/json"
 },
-body: JSON.stringify({
-name: name,
-email: email,
-guests: guests
-})
+body: JSON.stringify({ name, email, guests })
 })
 .then(res => res.json())
 .then(data => {
-document.getElementById("responseMsg").innerText = data.message; // success message
-form.reset(); // clear form
+const msg = document.getElementById("responseMsg");
+msg.innerText = data.message;
+msg.style.color = "green";
+msg.style.fontWeight = "bold";
+form.reset();
 })
 .catch(err => {
 console.error(err);
-document.getElementById("responseMsg").innerText = data.message;
+document.getElementById("responseMsg").innerText = "Something went wrong ❌";
 });
 
 });
 }
+
 
 
 // ------------------ GALLERY IMAGE POPUP ------------------
@@ -85,11 +87,8 @@ popup.addEventListener("click", function(){
 popup.remove();
 });
 
-const msg = document.getElementById("responseMsg");
-msg.innerText = data.message;
-msg.style.color = "green";
-
 document.body.appendChild(popup);
 
+});
 });
 });

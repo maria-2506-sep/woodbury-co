@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Contact | Woodbury & Co</title>
+<title>Contact | Woodbury & Co.</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header>
-<h1>Woodbury & Co Café ☕</h1>
+<h1>Woodbury & Co. ☕</h1>
 
 <nav>
 <a href="index.html">Home</a>
+<a href="about.html">About</a>
 <a href="menu.html">Menu</a>
 <a href="gallery.html">Gallery</a>
 <a href="contact.html">Contact</a>
@@ -20,31 +21,32 @@
 
 <section>
 
-<h2>Contact Us</h2>
-
-<p>Email: woodbury&co@gmail.com</p>
-<p>Phone: +91 98765 43210</p>
-<p>Location: Bangalore, India</p>
-<p id="responseMsg" style="color:green; font-weight:bold;"></p>
-
 <h2>Reserve a Table</h2>
 
+<p>Book your spot and enjoy a cozy café experience ☕</p>
+
+<!-- FORM -->
 <form>
+<input type="text" id="name" placeholder="Your Name" required>
 
-<input type="text" placeholder="Name" required>
-<input type="email" placeholder="Email" required>
-<input type="number" placeholder="Guests">
+<input type="email" id="email" placeholder="Your Email" required>
+
+<input type="number" id="guests" placeholder="Number of Guests">
+
 <button type="submit">Reserve</button>
-
 </form>
 
-<script src="script.js"></script>
+<!-- RESPONSE MESSAGE -->
+<p id="responseMsg"></p>
 
 </section>
 
 <footer>
 <p>© 2026 Woodbury & Co. Café | All Rights Reserved</p>
 </footer>
+
+<!-- JS (keep at bottom ALWAYS) -->
+<script src="script.js"></script>
 
 </body>
 </html>
