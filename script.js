@@ -101,8 +101,4 @@ document.body.appendChild(popup);
 });
 });
 
-<<<<<<< HEAD
 });
-=======
-});
->>>>>>> 9ad50d109eaf8e39fc6cceda4b97e1491cafa40e
