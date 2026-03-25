@@ -1,5 +1,6 @@
 // Smooth scrolling for navigation
 console.log("JS CONNECTED");
+
 document.addEventListener("DOMContentLoaded", function () {
 
 // ------------------ SMOOTH SCROLL ------------------
@@ -32,14 +33,20 @@ const name = document.getElementById("name").value;
 const email = document.getElementById("email").value;
 const guests = document.getElementById("guests").value;
 
-fetch("http://localhost:8000/add_reservation", {
+// ✅ FIXED FETCH (VERY IMPORTANT)
+fetch("/add_reservation", {
 method: "POST",
 headers: {
 "Content-Type": "application/json"
 },
 body: JSON.stringify({ name, email, guests })
 })
-.then(res => res.json())
+.then(res => {
+if(!res.ok){
+throw new Error("Server error");
+}
+return res.json();
+})
 .then(data => {
 const msg = document.getElementById("responseMsg");
 msg.innerText = data.message;
@@ -48,13 +55,15 @@ msg.style.fontWeight = "bold";
 form.reset();
 })
 .catch(err => {
-console.error(err);
-document.getElementById("responseMsg").innerText = "Something went wrong ❌";
+console.error("ERROR:", err);
+const msg = document.getElementById("responseMsg");
+msg.innerText = "Something went wrong ❌";
+msg.style.color = "red";
+msg.style.fontWeight = "bold";
 });
 
 });
 }
-
 
 
 // ------------------ GALLERY IMAGE POPUP ------------------
@@ -91,4 +100,5 @@ document.body.appendChild(popup);
 
 });
 });
+
 });
