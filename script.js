@@ -100,8 +100,6 @@ document.body.appendChild(popup);
 
 });
 });
-<<<<<<< HEAD
-
 });
 =======
 });
