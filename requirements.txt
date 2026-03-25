@@ -1,7 +1,4 @@
 flask
 flask-cors
 gunicorn
-<<<<<<< HEAD
-
-=======
->>>>>>> 3b6180043330a44fafc240714fe6dccb56c605bd
+mysql-connector-python
