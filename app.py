@@ -34,9 +34,4 @@ def add_reservation():
 
 # Run
 if __name__ == '__main__':
-<<<<<<< HEAD
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
-=======
-    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
-      
->>>>>>> 9ad50d109eaf8e39fc6cceda4b97e1491cafa40e
