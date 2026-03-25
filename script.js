@@ -100,5 +100,10 @@ document.body.appendChild(popup);
 
 });
 });
+<<<<<<< HEAD
 
 });
+=======
+});
+});
+>>>>>>> 7cb83aa3d821b0fa48706f3c93a319a9a9044bce
